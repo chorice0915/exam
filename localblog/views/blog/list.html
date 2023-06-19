@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block mid %} 
+
+<ul role="list" class="ml-80 mr-80 divide-y divide-gray-100">
+  {% if blogs %}
+    {% for blog in blogs %}
+    <a href="/blog/blog_list/{{blog.idUsers}}">
+      <p style="text-overflow: ellipsis" class="w-96 mt-3 mb-3 text-3xl font-semibold leading-6 text-gray-900">{{blog.nick}}</p>
+    </a>
+    <div class="bg-gray-700 w-auto h-0"></div>
+    {% endfor %}
+  {% endif %}
+</ul>
+
+
+{% endblock %}
