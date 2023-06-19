@@ -27,3 +27,4 @@ CREATE TABLE posts (
 
 INSERT INTO posts (title, content, writer) 
       VALUES ('제목 테스트입니다', '글 테스트입니다', 'tester');
+      

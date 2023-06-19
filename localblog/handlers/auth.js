@@ -10,10 +10,11 @@ const signInProcess = (req, res)=>{
   let sql = `SELECT * FROM users WHERE id=? and pw=?`;
   let values = [req.body.email, req.body.password];
   pool.query(sql, values, (err, rows, field)=>{
+    console.log(rows)
     if (err) throw err;
     if (rows.length>0){
       if(err) throw err;
-      req.session.user = {id : rows[0].id, nick : rows[0].nick, img : rows[0].img, pw : rows[0].pw};
+      req.session.user = {id : rows[0].id, nick : rows[0].nick, pw : rows[0].pw};
       res.render('index.html', {user : req.session.user});
     } else {
       res.render('auth/signIn.html', {msg : "아이디나 비밀번호가 일치하지 않습니다."});
@@ -38,13 +39,8 @@ const signUpProcess = (req, res)=>{
 }
 
 const signOut = (req, res)=>{
-  let sql = `UPDATE users SET lastLogin = ? WHERE id=?`;
-  let values = [getDateTime(new Date()), req.session.user.id];
-  pool.query(sql, values, (err, field)=>{
-    if(err) throw err;
-    req.session.destroy();
-    res.render('index.html');
-  })
+  req.session.destroy();
+  res.render('index.html');
 }
 
 module.exports = {
