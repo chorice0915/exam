@@ -1,10 +1,10 @@
 "\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -uroot -p1234
 
-create schema localblog;
-use localblog;
+create schema testblog;
+use testblog;
 
-create user 'localblog'@'%' identified by '1234';
-grant all privileges on localblog.* to 'localblog'@'%';
+create user 'testblog'@'%' identified by '1234';
+grant all privileges on testblog.* to 'testblog'@'%';
 
 CREATE TABLE users (
   idUsers       INT NOT NULL AUTO_INCREMENT,
